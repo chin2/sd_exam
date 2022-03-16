@@ -10,6 +10,3 @@ urlpatterns = [
     path('sample2/',views.sample2,name="sample2")
 ]
 
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
