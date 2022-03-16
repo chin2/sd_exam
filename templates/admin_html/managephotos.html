@@ -1,0 +1,45 @@
+{% extends 'Admin/base.html' %}
+
+{% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  {% include 'includes/pronav.html' %}
+  <div class="container-fluid mt-5 ">
+
+    <div class="row ">
+      <div class="col-xl-12 mb-5 mb-xl-0">
+        <div class="card  shadow" style="background-color: whitesmoke;">
+          <div class="card-header bg-transparent text-dark text-center">
+              Manage photos change image category by above toggle
+              <p>{{msg}}</p>
+          </div>
+          <div class="card-body text-white">
+           <div class="row">
+            {% for i in images %}
+            <div class="col-4 text-center">
+              
+              <img src="{{ i.image }}" class="" height="200px" width="200px" alt="">
+              <br>
+              <a name="" id="" class="btn btn-danger mt-2" href="{%  url 'imagedelete' %}?s={{i.id}}" role="button"> Delete</a>
+          
+            </div>
+            {% endfor %}
+         
+   
+           </div>
+           
+           
+          </div>
+        </div>
+      </div>
+    
+    </div>
+{% include 'includes/footer.html' %}
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}

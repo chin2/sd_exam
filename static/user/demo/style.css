@@ -1,0 +1,300 @@
+.reachus_container {
+    position: relative;
+    
+  }
+  
+  .image {
+    display: block;
+   
+  }
+  
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(100, 100, 100, 0.5);
+    overflow: hidden;
+    width: 240px;
+    height: 0;
+    transition: .5s ease;
+  }
+  
+  .reachus_container:hover .overlay {
+    height: 100%;
+  }
+  
+  .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  /* Extra small devices (phones, 600px and down) */
+  
+  
+  
+  
+  @media screen and (max-width: 279px) {
+      .missionandvisionimage{
+        height: 100px  !important;
+        width: auto !important;
+      }
+      .responsive {
+        width: 100%;
+      }
+      .user_text{
+        font-size: 9px !important ;
+        margin-left: -20px;
+        margin-top: -10px;
+  
+      }
+      .user_heading{
+        font-weight: 200;
+        font-size: 20px !important; 
+        color:#6C4599;
+        margin-top: 30px  !important;
+      }
+      .title_heading{
+        font-weight: 500;
+        font-size: 20px !important;
+      }
+      .title_text{
+        font-weight: 300;
+        text-align: center !important;
+        font-size: 15px !important;
+      }
+  }
+  
+  @media screen and (min-width: 280px) and (max-width: 400px) {
+      .missionandvisionimage{
+        height: 150px  !important;
+        width: auto !important;
+      }
+      .responsive {
+        width: 100%;
+      }
+      .user_text{
+        font-size: 13px !important;
+        margin-left: -20px;
+        margin-top: -10px;
+      }
+      .user_heading{
+        font-size: 20px !important; 
+  
+        font-weight: 900; 
+        color:#6C4599;
+        margin-top: 50px  !important;
+      }
+      .title_heading{
+        font-weight: 600;
+        font-size: 24px !important;
+      }
+      .title_text{
+        font-weight: 400;
+        text-align: center !important;
+        font-size: 19px !important;
+      }
+  }
+  
+  @media screen and (min-width: 400px) and (max-width: 474px) {
+      .missionandvisionimage{
+        height: 220px  !important;
+        width: auto !important;
+      }
+      .responsive {
+        width: 100%;
+      }
+      .user_text{
+        font-size: 15px !important;
+        margin-left: -20px;
+        margin-top: -10px;
+      }
+      .user_heading{
+        font-size: 20px !important; 
+        font-weight: 900; 
+        color:#6C4599;
+        margin-top: 50px  !important;
+      }
+      .title_heading{
+        font-weight: 600;
+        font-size: 24px !important;
+      }
+      .title_text{
+        font-weight: 400;
+        text-align: center !important;
+        font-size: 19px !important;
+      }
+  }
+  
+  
+  
+  @media screen and (min-width: 475px) and (max-width: 720px) {
+      .missionandvisionimage{
+        height: 280px  !important;
+        width: auto !important;
+      }
+      .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+      }
+      .user_text{
+        margin-left: -20px;
+        font-size: 20px !important;
+      }
+      .user_heading{
+        font-size: 25px !important;
+        font-weight: 900; 
+        color:#6C4599;
+        margin-top: 50px  !important;
+      }
+      .title_heading{
+        font-weight: 800;
+        font-size: 34px !important;
+      }
+      .title_text{
+        font-weight: 400;
+        margin-top:40px ;
+        text-align: center !important;
+        font-size: 24px !important;
+      }
+  }
+  
+  @media screen and (min-width: 721px) and (max-width: 1280px) {
+      .missionandvisionimage{
+        height: 380px  !important;
+        width: auto !important;
+      }
+      
+      .user_text{
+        margin-left: -20px;
+        font-size: 20px !important;
+      }
+      .user_heading{
+        font-size: 29px !important;
+        font-weight: 900 !important; 
+        color:#6C4599;
+        margin-top: 100px  !important;
+      }
+      .title_heading{
+        font-weight: 800 !important;
+      }
+      .title_text{
+        font-weight: 400;
+        margin-top:40px ;
+        text-align: center !important;
+      }
+  }
+  
+  @media screen and (min-width: 1281px) and (max-width: 1440px) {
+      .missionandvisionimage{
+        height: auto  !important;
+        width: auto !important;
+      }
+      .user_text{
+        margin-left: -20px;
+        font-size: 20px !important;
+      }
+      .user_heading{
+        font-size: 29px !important;
+        font-weight: 900 !important; 
+        color:#6C4599;
+        margin-top: 100px  !important;
+      }
+      .title_heading{
+        font-weight: 800 !important;
+      }
+      .title_text{
+        font-weight: 400;
+        margin-top:40px ;
+        text-align: center !important;
+      }
+  }
+  
+  @media screen and (min-width: 1441px) and (max-width: 1920px) {
+      .missionandvisionimage{
+        height: auto  !important;
+        width: auto !important;
+      }
+      .user_text{
+        font-size: 25px !important;
+      }
+      .user_heading{
+        font-weight: 900; 
+        color:#6C4599;
+        margin-top: 100px  !important;
+      }
+      .user_text{
+        font-size: 25px !important;
+      }
+      .user_heading{
+        font-weight: 900 !important; 
+        color:#6C4599;
+        margin-top: 100px  !important;
+      }
+  }
+  
+  @media screen and (min-width: 1921px) {
+      .missionandvisionimage{
+        height:  auto !important;
+        width: auto !important;
+      }
+      .user_text{
+        font-size: 25px !important;
+      }
+      .user_heading{
+        font-weight: 900; 
+        color:#6C4599;
+        margin-top: 100px  !important;
+      }
+  }
+
+
+  div.gallery {
+    border: 1px solid #ccc;
+  }
+  
+  div.gallery:hover {
+    border: 1px solid #777;
+  }
+  
+  div.gallery img {
+    width: 100%;
+    height: auto;
+  }
+  
+  div.desc {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+  }
+  
+  @media only screen and (max-width: 700px) {
+ 
+  }
+  
+  @media only screen and (max-width: 500px) {
+
+  }
+  
+  .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  

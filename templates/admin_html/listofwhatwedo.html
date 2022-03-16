@@ -1,0 +1,46 @@
+{% extends 'Admin/base.html' %}
+
+{% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  {% include 'includes/pronav.html' %}
+   
+  <div class="container-fluid mt-5 ">
+
+    <div class="row ">
+      <div class="col-xl-12 mb-5 mb-xl-0">
+        <div class="card  shadow" style="background-color: #7963E4;">
+          <div class="card-header bg-transparent text-white text-center">
+              list of what we do and you can delete what we do
+              <p>{{msg}}</p>
+          </div>
+          <div class="card-body text-white">
+           <div class="row">
+             <div class="col text-center mx-5">
+              {% for i in selection %}
+              <div class="row">
+                <div class="col-8">
+                    <p style="font-size: 20px; font-weight: 800;">{{i.name}}</p>
+                </div>
+                <div class="col-4">
+                  <a name="" id="" class="btn btn-danger" href="{% url 'listdelete' %}?s={{i.id}}" role="button">delete</a>
+                </div>
+              </div>
+              {% endfor %}
+               
+             </div>
+           </div>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+{% include 'includes/footer.html' %}
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}

@@ -1,0 +1,150 @@
+{% extends 'layouts/base2.html' %}
+
+{% block title %} Dashboard {% endblock title %}
+{% load static %}
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block content %}
+ 
+
+  <!-- main-content -->
+  <div class="main main-raised">
+    <div class="section section-basic">
+      <div class="container">
+        
+          <div class="row user_heading d-flex justify-content-center" style="margin-top: -40px !important;">
+            Content :
+        </div>
+          <div class=" mt-4">
+            <ul>
+              <li class=" text-justify user_text d-flex justify-content-center" >
+                {{content}}
+                </li>
+             
+              </ul>
+          </div>
+          <div class="row user_heading d-flex justify-content-center " style="margin-top: 100px !important;">
+              Gallery
+          </div>
+            <div class="container">
+                <div class="row photos d-flex
+                justify-content-center">
+
+
+                {% for i in images %}
+                <div class="col-sm-6 col-md-4 col-lg-3 item mt-5  ">
+                  <img class="img-fluid image_file{{i.id}}" onclick="imagemodelview({{i.id}})" 
+                  style="cursor: pointer; border-radius: 20px;" 
+                  src="{{i.image}}">
+                  <p class="text-info"> {{i.date}}</p>
+                </div>
+
+                {% endfor %}         
+                  </div>
+        </div>
+        
+   <br>
+
+          <div class="" >
+           
+            <div class="row user_heading d-flex justify-content-center">
+                Other Services :
+            </div>
+        
+            <div class="" >
+              <div class="row mt-5">
+                {% for i in selection %}
+                <div class=" col-sm-6 col-md-4 " >
+                  <div class="row d-flex justify-content-center " >
+                    <div class="reachus_container">
+                      <img src="{{i.image}}" style="border-radius: 2px;" height="180px" width="240px" alt="Avatar" class="image">
+                      <div class="overlay">
+                        <div class="text">
+                       <a href="{% url 'detailswhatwedo' %}?search={{i.name}}&s={{i.id}}" class="text-white">
+                          <i class="fa fa-eye" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+                    </div>  
+                  </div>
+                  <div class="row d-flex justify-content-center mt-2">
+                    <p class="" style="color: grey;" >{{i.name}}</p>
+                  </div>
+                
+                 
+        
+                </div>
+                {% endfor %}
+    
+               
+                
+                
+        
+                </div>
+                
+                
+              </div>
+
+
+            
+            
+          </div>
+         
+        </div>
+
+
+
+        {% include 'layouts/contactus.html' %}
+   
+        <!--    progress/sliders -->
+      
+        <!--                 end sliders -->
+      </div>
+    </div>
+   
+   
+    <!--         end carousel -->
+  </div>
+  <!-- End main-content -->
+  <div class="modal fade modal-shadow  " id="image_view" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <!-- Change class .modal-sm to change the size of the modal -->
+    <div class="modal-dialog modal-lg modal-dialog-centered " role="document">
+        <div class="modal-content " style="border-radius:  30px; background: white ">
+            <div class="modal-header border-0">
+                <div class="container text-center" data-dismiss="modal" style="background: rgba(0,0,0,0.0); font-size: 50px; padding-bottom: 40px; color:#9167B2; cursor: pointer;">
+                  <span aria-hidden="true">&times;</span>
+                </div>
+            </div>
+            <div class="modal-body m-0 p-0 border-0">
+                <div class="text-center ">
+                  <img style="border-radius: 30px;" class="fixing_image" src="{% static 'user/img/abovemission.jpg' %}" height="300px" width="300px" alt="">
+                </div>
+            </div>
+            <div class="modal-footer mt-0 border-0">
+                <div class="container text-center pt-5">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  {% endblock content %}
+
+  <!-- Specific JS goes HERE --> 
+  {% block javascripts %}
+  <script>
+    function imagemodelview(e){
+      $("#image_view").modal({
+                                backdrop: 'static',
+                                keyboard: false
+      })
+      console.log($('.image_file'+e).attr('src'))
+      $(".fixing_image").attr("src", $('.image_file'+e).attr('src'));
+    }
+ 
+  </script>
+  {% endblock javascripts %}

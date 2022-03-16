@@ -1,0 +1,117 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Dashboard {% endblock title %}
+{% load static %}
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block content %}
+ 
+
+  <!-- main-content -->
+  <div class="main main-raised">
+    <div class="section section-basic">
+      <div class="container">
+
+        <div class="  text-center" >
+          <img src="{% static 'user/img/abovemission.jpg' %}" class='missionandvisionimage' style="border-radius: 30px;" alt="">
+        </div>
+
+        <div class="missionandvission ">
+          <h2 class="text-center user_heading" >Mission and Vision</h2>
+        </div>
+        <div class=" mt-4">
+          <ul>
+            <li class="mt-3 text-justify user_text" >
+            To Work with Communities to make them believe every Individual the Social Rights and provide access to the resource and opportunities in order to LIVE, Grow with Self-Esteem and Contribute for the better safe and healthy Poverty less Society.
+              </li>
+           
+            </ul>
+        </div>
+
+        <div class="aboutus" id="aboutus">
+          <h2 class="text-center user_heading">About Us</h2>
+        </div>
+        <div class="">
+          <ul  style="font-size: 25px;">
+            <li class="mt-4 text-justify user_text"><b>ARISE (ASSOCIATION OF RURAL INFRA SERVICES AND EDUCATION)</b> which means to STAND UP for the empowerment of society, founded in 2017, is an NGO in India registered as a Non-Profitable Organisation/ trust in Malli, Srivilliputhur, Tamil Nadu.
+              </li>
+              <li class="mt-4 text-justify user_text">
+                <b>ARISE</b> closely works with the vulnerable communities and empowers the socially marginalized by providing them livelihood linkages, imparting skills leading to employment, health and education facilities. The focus areas of ARISE are livelihoods, skill development, health and education, rights, green environment, rehabilitation and resettlement and other community development initiatives.
+              </li>
+              <li class="mt-4 text-justify user_text">
+                <b>ARISE</b> began as a Charitable Trust that pioneered in rejuvenating underprivileged and vulnerable neighborhoods into self-sustaining and developed communities by its Integrated Community Development Programes changing the environment of the neighborhood. ARISE supports to the underdeveloped to obtain government identities, providing them access to public benefit schemes, imparting skills leading to employment, providing access to habitable environment and basic education
+              </li>
+              <li class="mt-4 text-justify user_text">
+                Over the years, <b>ARISE</b> has partnered with various entities – individuals and other NGO/NPOs for several undertakings of greater good. In the last 3 years ARISE has rendered it services to several villages, children, women, youth and vulnerable people in Virudhunagar District, Tamil Nadu, touched the lives of more than 10000 individuals.
+              </li>
+              <li class="mt-4 pb-3 text-justify user_text">
+              
+As <b>ARISE</b> marches forward with its partners in its journey towards uplifting the marginalized, it keeps on expanding its horizon of the communities it serves. In this journey, ARISE has received several accolades for its programs, internal systems, organizational ethics, best practices.
+              </li>
+            </ul>
+            <hr>
+        </div>
+
+        <div class="missionandvission mt-5"  >
+          <h2 class="text-center user_heading">Our Services</h2>
+        </div>
+
+        <div class="" >
+          <div class="row mt-5">
+            {% for i in selection %}
+            <div class=" col-sm-6 col-md-4 " >
+              <div class="row d-flex justify-content-center " >
+                <div class="reachus_container">
+                  <img src="{{i.image}}" height="180px" width="240px" alt="Avatar" class="image">
+                  <div class="overlay">
+                    <div class="text">
+                   <a href="{% url 'detailswhatwedo' %}?search={{i.name}}&s={{i.id}}" class="text-white"> <i class="fa fa-eye" aria-hidden="true"></i></a>
+                    </div>
+                  </div>
+                </div>  
+              </div>
+              <div class="row d-flex justify-content-center mt-2">
+                <p class="" style="color: grey;" >{{i.name}}</p>
+              </div>
+            
+             
+    
+            </div>
+            {% endfor %}
+
+           
+            
+            
+    
+            </div>
+            
+            
+          </div>
+         
+        </div>
+
+
+
+        {% include 'layouts/contactus.html' %}
+   
+        <!--    progress/sliders -->
+      
+        <!--                 end sliders -->
+      </div>
+    </div>
+   
+   
+    <!--         end carousel -->
+  
+  </div>
+  <!-- End main-content -->
+
+ 
+
+  {% endblock content %}
+
+  <!-- Specific JS goes HERE --> 
+  {% block javascripts %}{% endblock javascripts %}

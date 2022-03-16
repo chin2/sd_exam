@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Learn more about Django, the popular batteries-included Python web framework, on Full Stack Python.">
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Django" />
+<meta name="twitter:image" content="https://www.fullstackpython.com/img/pages/default.jpg" />
+<meta name="twitter:site" content="@fullstackpython" />
+<meta name="twitter:creator" content="@mattmakai" />
+<meta property="og:url" content="https://www.fullstackpython.com/django.html" />
+<meta property="og:title" content="Django" />
+<meta property="og:description" content="Learn more about Django, the popular batteries-included Python web framework, on Full Stack Python." />
+<meta property="og:image" content="https://www.fullstackpython.com/img/pages/default.jpg" />
+<link rel="canonical" href="https://www.fullstackpython.com/django.html" />
+<title>Django - Full Stack Python</title> <style>hr,img{border:0}*,:after,:before{box-sizing:border-box}html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-size:18px;background:#fefefe}body{margin:0;font:18px Georgia,serif;line-height:1.4;color:#222;padding:0}img{vertical-align:middle}hr{height:0;box-sizing:content-box;margin:21px 0;border-top:1px solid #eee}h1,h2,h3,h4,h5,h6{font-family:"Helvetica Neue",sans-serif;font-weight:500;line-height:1.1;color:#000}h1,h2,h3{margin:30px 0 6px}h1{font-size:40px}h2{font-size:28px}h3{font-size:22px}h4,h5,h6{margin:11px 0;font-size:18px}p{margin:0 0 12px}ol,ul{margin:0 0 10px}code,pre{font:"Courier New",monospace;border-radius:4px;background-color:#f4f9ff;font-size:12px}code{padding:2px 4px;white-space:nowrap}pre{overflow:scroll;white-space:pre;display:block;padding:10px;margin:0 0 11px;line-height:1.4;word-break:break-all;word-wrap:break-word;border:1px solid #ccc}.cn{padding:0 15px 0 15px;margin-right:auto;margin-left:auto}.cn:before,.cn:after{display:table;content:" "}.cn:after{clear:both}.row:before,.row:after{display:table;content:" "}.row:after{clear:both}.c2,.c3,.c4,.c5,.c6,.c7,.c8,.c9,.c10,.c11,.c12{position:relative;min-height:1px;padding:0 15px 0 15px}a{background:transparent;text-decoration:none;border-bottom:1px dotted;color:#444}a:hover{text-decoration:none;color:#000}.ft{padding:0 0 24px;float:right}.sns{font-family:"Helvetica Neue",sans-serif}.sps{font-size:14px}.hd{margin:20px 0 15px 0}.hd>a{border-bottom:none}img.hdr{vertical-align:middle;border:none;height:52px;width:52px;padding:1px}.hdt a,.hdt a:hover{font:72px "Helvetica Neue",sans-serif;font-weight:normal;letter-spacing:.03em;vertical-align:middle;margin-left:5px;color:#000;text-decoration:none;border-bottom:none;line-height:.9em}.bk{margin:0 5px 0 5px}img.nob{border:none}p.banner{font-weight:500;line-height:1.1;color:#fff;font-size:22px;margin:14px 0 18px 0}.bp{line-height:1.3em}.pn{margin:0 0 21px;background:#fff;border:1px solid transparent;border-radius:4px;border-color:#22b24c}.pnb{padding:15px}.pnb:before,.pnb:after{display:table;content:" "}.pnb:after{clear:both}.pn>.lg{margin-bottom:0}.pn>.lg .lgi{border-width:1px 0;font:14px 'Helvetica Neue',sans-serif;padding:5px 0 5px 10px}.pn>.lg .lgi:first-child{border-top-right-radius:0;border-top-left-radius:0}.pn>.lg .lgi:last-child{border-bottom:0;background-color:#22b24c;color:#fff}.pnh+.lg .lgi:first-child{border-top-width:0}.pnh{padding:10px 15px;border-bottom:1px solid transparent;border-top-right-radius:3px;border-top-left-radius:3px;color:#468847;background-color:#22b24c;border-color:#22b24c}.pn>.pnh>h3{margin:5px 0 0 0;color:#fff}.pn>.pnh>h3>a{color:#fff}.pn>.lg a.lgi.sbc{padding-left:27px}.pn>.lg a.lgi.sbc2{padding-left:35px}#sb{margin-top:40px}.lg{padding-left:0;margin-bottom:20px}.lgi{position:relative;display:block;padding:10px 15px;margin-bottom:-1px;background-color:#fff;border:1px solid #ddd}.lgi:first-child{border-top-right-radius:4px;border-top-left-radius:4px}.lgi:last-child{margin-bottom:0;border-bottom-right-radius:4px;border-bottom-left-radius:4px}a.lgi{color:#333}a.lgi:hover,a.lgi:focus{background:#ddd}a.lgi.active{z-index:2;background:#444;color:#fff;border:1px solid #222}.btn-full{width:100%;box-shadow:1px 2px 1px #222;padding-bottom:4px}p.under-btn{text-align:left;margin-top:20px}th{text-align:left;font-family:"Helvetica Neue",sans-serif}td{padding-right:20px}blockquote{border-left:4px solid #aaa;padding-left:10px;font-family:"Helvetica Neue"}.well{min-height:20px;padding:19px;margin:0 0 20px;background-color:#f5f5f5;border:1px solid #e3e3e3;border-radius:4px;box-shadow:inset 0 1px 1px rgba(0,0,0,0.05)}.see-also{margin-top:20px;background:#22B24C;color:#eee;font-family:"Helvetica Neue",sans-serif}.see-also a{color: #fff}.highlight{background:#ffff00}.form-control{display:block;width:100%;height:39px;padding:8px 12px;font-size:14px;color:#777;vertical-align:middle;background-color:#fff;background-image:none;border:1px solid #ccc;border-radius:4px;box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}.form-control:focus{border-color:#66afe9;outline:0;box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6)}.btn{display:inline-block;padding:8px 12px;margin-bottom:0;font-size:15px;line-height:1.4;text-align:center;white-space:nowrap;vertical-align:middle;cursor:pointer;border:1px solid transparent;border-radius:4px;color:#fff;background-color:#22b24c;border-color:#22b24c}.btn:active,.btn.active{background-image:none;outline:0;box-shadow:inset 0 3px 5px rgba(0,0,0,0.125)}img.rnd{border:1px solid #ccc;border-radius:5px}.shot{border-radius:5px}.outl{border: 1px solid #ccc}.talk{margin-bottom:22px}.sn{color:#777}h3.toc-examples{margin-top:4px} #carbonads { display: block; overflow: hidden; text-align: center; font-size: 14px; line-height: 1.5; } #carbonads a { color: inherit; border: 0; } #carbonads a:hover { color: inherit; } #carbonads span { display: block; overflow: hidden; } .carbon-img { display: block; margin: 0 auto 8px; line-height: 1; } .carbon-text { display: block; margin-bottom: 8px; } .carbon-poweredby { text-transform: uppercase; display: block; font-size: 10px; font-family: "Helvetica Neue", sans-serif; letter-spacing: 1px; line-height: 1; } @media only screen and (min-width: 320px) and (max-width: 759px) { #carbonads { float: none; margin: 0 auto; max-width: 330px; } #carbonads span { position: relative; } #carbonads>span { max-width: none; } .carbon-img { float: left; margin: 0 1em 0 0; } .carbon-text { float: left; margin-bottom: 20px; text-align: left; max-width: calc(100% - 130px - 1em); } .carbon-poweredby { position: absolute; left: 142px; bottom: 0; display: block; } }@media (min-width:750px){.cn{width:730px}}@media (min-width:768px){.cn{width:750px}#full-toc{display:block}#mobile-toc{display:none}.c3,.c4,.c6,.c8,.c9,.c12{float:left}.c12{width:100%} .c9{width:75%} .c6{width:50%} .c8{width:66.66666666666666%} .c4{width:33.33333333333333%} .c3{width:25%} .co1{margin-left:8.333333333333332%} .select-next{min-height:300px}}@media (min-width:940px){.cn{width:920px}}@media (min-width:1140px){.cn{width:1120px}}.row{margin-right:-15px;margin-left:-15px} @media (max-width:767px){#full-toc{display:none} .desktop-only{display:none} pre{overflow-wrap:normal;word-wrap:normal;word-break:keep-all} .hd{padding:8px 0 10px; margin:0} .hdt a,.hdt a:hover{font-size:34px} h1{font-size:28px} h2{font-size:24px} img.hdr{height:26px;width:26px} pre{font-size:60%}} @media (min-width:1140px){.select-next{min-height:220px}}</style><link rel="shortcut icon" href="/img/fsp-fav.png">
+</head>
+<body>
+<div class="cn">
+<div class="row"><div class="c12"><div class="hd"><a href="https://www.fullstackpython.com/"><img src="/img/logos/f.png" class="hdr" alt="Full Stack Python logo"></a><span class="hdt"> <a href="https://www.fullstackpython.com/">Full Stack Python</a></span></div><div class="sns">
+<a href="/table-of-contents.html">All topics</a> <span class="bk">|</span>
+<a href="/blog.html">Blog</a> <span class="bk">|</span>
+
+<a href="https://www.deploypython.com/full-stack-python.html">Supporter's Edition</a> <span class="bk">|</span>
+<a href="https://twitter.com/fullstackpython">@fullstackpython</a> <span class="bk">|</span>
+<a href="https://www.facebook.com/fullstackpython">Facebook</a> <span class="bk">|</span>
+<a href="/change-log.html">What's new?</a>
+</div></div></div><div class="row">
+<div class="c12">
+<h1 style="font-size: 32px">Django</h1>
+</div>
+</div>
+<div class="row">
+<div class="c8">
+<p><a href="http://www.djangoproject.com/">Django</a> is a widely-used Python web
+application framework with a "batteries-included" philosophy. The principle
+behind batteries-included is that the common functionality for building
+web applications should come with the framework instead of as separate
+libraries.</p>
+<p><a href="http://www.djangoproject.com/" style="border: none;"><img src="/img/logos/django.png" width="100%" alt="Official Django logo. Trademark Django Software Foundation." class="shot"></a></p>
+<p>For example,
+<a href="https://docs.djangoproject.com/en/dev/topics/auth/">authentication</a>,
+<a href="https://docs.djangoproject.com/en/dev/topics/http/urls/">URL routing</a>, a
+<a href="/django-templates.html">template engine</a>,
+an <a href="/object-relational-mappers-orms.html">object-relational mapper</a> (ORM),
+and <a href="https://docs.djangoproject.com/en/dev/topics/migrations/">database schema migrations</a>
+are all included with the <a href="https://pypi.org/project/Django/">Django framework</a>.
+Compare that included functionality to the Flask framework which requires a
+separate library such as
+<a href="https://flask-login.readthedocs.org/en/latest/">Flask-Login</a>
+to perform user authentication. </p>
+<p>The batteries-included and extensibility philosophies are simply two different
+ways to tackle framework building. Neither philosophy is inherently better
+than the other one.</p>
+<div class="well see-also">Django is an implementation of the <a href="/web-frameworks.html">web frameworks</a> concept. Learn how these pieces fit together in the <a href="/web-development.html">web development</a> chapter or view the <a href="/table-of-contents.html">table of contents</a> for all topics.</div>
+<h2>Why is Django a good web framework choice?</h2>
+<p>The Django project's stability, performance and community have grown
+tremendously over the past decade since the framework's creation. Detailed
+tutorials and good practices are readily available on the web and in books.
+The framework continues to add significant new functionality such as
+<a href="https://docs.djangoproject.com/en/dev/topics/migrations/">database migrations</a>
+with each release. </p>
+<p>I highly recommend the Django framework as a starting place for new Python web
+developers because the official documentation and tutorials are some of the
+best anywhere in software development. Many cities also have Django-specific
+groups such as <a href="http://www.meetup.com/django-district/">Django District</a>,
+<a href="http://www.meetup.com/djangoboston/">Django Boston</a> and
+<a href="http://www.meetup.com/The-San-Francisco-Django-Meetup-Group/">San Francisco Django</a>
+so new developers can get help when they are stuck.</p>
+<h2>Django books and tutorials</h2>
+<p>There are a slew of free or low cost resources out there for Django. Make
+sure to check the version numbers used in each post you read because
+Django was released over 10 years ago and has had a huge number of updates
+since then. These resources are geared towards beginners. If you are already
+experienced with Django you should take a look at the next section of
+resources for more advanced tutorials.</p>
+<ul>
+<li>
+<p><a href="http://www.tangowithdjango.com/">Tango with Django</a> is an extensive
+set of free introductions to using the most popular Python web framework.
+Several current developers said this book really helped them get over the
+initial framework learning curve.</p>
+</li>
+<li>
+<p>The <a href="http://tutorial.djangogirls.org/en/index.html">Django Girls Tutorial</a>
+is a great tutorial that doesn't assume any prior knowledge of Python or
+Django while helping you build your first web application.</p>
+</li>
+<li>
+<p><a href="https://simpleisbetterthancomplex.com/series/beginners-guide/1.11/">A Complete Beginner's Guide to Django</a>
+is a wonderful seven-part series that incrementally builds out a Django
+project and handles <a href="/deployment.html">deploying the app</a> in the final
+post. The seven parts are:</p>
+<ul>
+<li><a href="https://simpleisbetterthancomplex.com/series/2017/09/04/a-complete-beginners-guide-to-django-part-1.html">Getting Started</a></li>
+<li><a href="https://simpleisbetterthancomplex.com/series/2017/09/11/a-complete-beginners-guide-to-django-part-2.html">Fundamentals</a></li>
+<li><a href="https://simpleisbetterthancomplex.com/series/2017/09/18/a-complete-beginners-guide-to-django-part-3.html">Advanced Concepts</a></li>
+<li><a href="https://simpleisbetterthancomplex.com/series/2017/09/25/a-complete-beginners-guide-to-django-part-4.html">Authentication</a></li>
+<li><a href="https://simpleisbetterthancomplex.com/series/2017/10/02/a-complete-beginners-guide-to-django-part-5.html">Django ORM</a></li>
+<li><a href="https://simpleisbetterthancomplex.com/series/2017/10/09/a-complete-beginners-guide-to-django-part-6.html">Class-Based Views</a></li>
+<li><a href="https://simpleisbetterthancomplex.com/series/2017/10/16/a-complete-beginners-guide-to-django-part-7.html">Deployment</a></li>
+</ul>
+</li>
+<li>
+<p><a href="http://www.obeythetestinggoat.com/">Test-Driven Development with Python</a>
+focuses on web development using Django and JavaScript. This book uses
+the development of a website using the Django web framework as a real
+world example of how to perform test-driven development (TDD). There is
+also coverage of NoSQL, WebSockets and asynchronous responses. The book can
+be read online for free or purchased in hard copy via O'Reilly.</p>
+</li>
+<li>
+<p><a href="https://overiq.com/django/1.10/intro-to-django">Django OverIQ</a> is a
+project-based tutorial for beginners that covers the required features
+such as the <a href="/django-orm.html">Django ORM</a> and
+<a href="/django-templates.html">Django Templates</a>.</p>
+</li>
+<li>
+<p>The <a href="http://www.reddit.com/r/django">Django subreddit</a> often has links to
+the latest resources for learning Django and is also a good spot to ask
+questions about it.</p>
+</li>
+<li>
+<p>This Django tutorial shows how to
+<a href="http://drksephy.github.io/2015/07/16/django/">build a project from scratch using Twitter Bootstrap, Bower, Requests and the Github API</a>.</p>
+</li>
+<li>
+<p>The <a href="http://www.revsys.com/blog/2014/nov/21/recommended-django-project-layout/">recommended Django project layout</a>
+is helpful for developers new to Django to understand how to structure
+the directories and files within apps for projects.</p>
+</li>
+<li>
+<p><a href="https://www.amazon.com/Django-Beginners-Learn-web-development/dp/1983172669">Django for Beginners: Build websites with Python and Django</a>
+by <a href="https://wsvincent.com/">William S. Vincent</a> is perfect if you are
+just getting started with Django and web development, taking you from
+total beginner to confident web developer with Django and Python.</p>
+</li>
+</ul>
+<h3>Django videos</h3>
+<p>Are you looking for Django videos in addition to articles? There is a special
+section for Django and web development on the
+<a href="/best-python-videos.html">best Python videos</a> page.</p>
+<h3>Intermediate and advanced Django topics</h3>
+<p>These books and tutorials assume that you know the basics of building
+Django and want to go further to become much more knowledgeable about
+the framework.</p>
+<ul>
+<li>
+<p><a href="https://www.twoscoopspress.com/collections/django/products/two-scoops-of-django-1-11">2 Scoops of Django</a>
+by Daniel Greenfeld and Audrey Roy is well worth the price of admission if
+you're serious about learning how to correctly develop Django websites.</p>
+</li>
+<li>
+<p>The <a href="https://testdriven.io/courses/tdd-django/?utm_source=fsp">Test-Driven Development with Django, Django REST Framework, and Docker</a>
+course details how to set up a development environment with Docker in
+order to build and deploy a RESTful API powered by Python, Django,
+and Django REST Framework.</p>
+</li>
+<li>
+<p><a href="https://www.mattlayman.com/understand-django/user-interaction-forms/">User Interaction With Forms</a>
+explains general web form input, how Django handles forms via POST requests,
+different types of input such as CharFields, DateFields and EmailFields,
+and validating that input.</p>
+</li>
+<li>
+<p>This 3-part Django project optimization guide covers a wide range of
+advanced topics such as
+<a href="https://dizballanze.com/django-project-optimization-part-1/">Profiling and Django settings</a>,
+<a href="https://dizballanze.com/django-project-optimization-part-2/">working with databases</a>
+and <a href="https://dizballanze.com/django-project-optimization-part-3/">caching</a>.</p>
+</li>
+<li>
+<p><a href="https://testdriven.io/blog/django-caching/">Caching in Django</a> is a detailed
+look at the configuration required for caching and how to measure the
+performance improvements once you have it in place.</p>
+</li>
+<li>
+<p><a href="https://djangodeconstructed.com/2020/01/03/mental-models-for-class-based-views/">Mental Models for Class Based Views</a>
+provides some comparison points between class based views (CBVs) and
+function based views and the author's opinions for how you can better
+understand CBVs.</p>
+</li>
+<li>
+<p>Working with time zones is necessary for every web application. This
+<a href="http://tommikaikkonen.github.io/timezones/">blog post on pytz and Django</a> is a
+great start for figuring out what you need to know.</p>
+</li>
+<li>
+<p><a href="https://arunrocks.com/a-guide-to-asgi-in-django-30-and-its-performance/">A Guide to ASGI in Django 3.0 and its Performance</a>
+covers the new Asynchronous Server Gateway Interface (ASGI) that was
+introduced in Django 3.0 and explains some of the nuances and gotchas
+that you should consider if you decide to use it for your web apps.</p>
+</li>
+<li>
+<p><a href="https://www.amazon.com/dp/198302998X">REST APIs with Django: Build powerful web APIs with Python and Django</a>
+by <a href="https://wsvincent.com/">William S. Vincent</a> is the book for you
+if you are just moving beyond the basics of Django and looking to get
+up speed with <a href="/django-rest-framework-drf.html">Django REST Framework (DRF)</a>
+and service-oriented architecture (SOA). It also dives into more advanced
+topics like token-based authentication and permissions.</p>
+</li>
+<li>
+<p><a href="https://testdriven.io/django-stripe-tutorial">Django Stripe Tutorial</a>
+details how to quickly add Stripe to accept payments in a Django web app.</p>
+</li>
+<li>
+<p>This <a href="https://github.com/davisfreeman1015/SocialAuthDjangoTutorial">Python Social Auth for Django tutorial</a>
+will show you how to integrate social media sign in buttons into your Django
+application.</p>
+</li>
+<li>
+<p><a href="http://thosecleverkids.com/thoughts/posts/upgrading-django">Upgrading Django</a>
+provides a version-by-version guide for updating your Django projects'
+code.</p>
+</li>
+<li>
+<p>The <a href="https://books.agiliq.com/projects/django-admin-cookbook/en/latest/">Django Admin Cookbook</a>
+and
+<a href="https://books.agiliq.com/projects/django-multi-tenant/en/latest/">Building Multi Tenant Applications with Django</a>
+are two solid "code recipe-style" free open source books that will teach
+you more about the admin interface as well as building projects that
+will be used by more than a single customer so their data needs to be
+properly separated.</p>
+</li>
+<li>
+<p><a href="https://simpleisbetterthancomplex.com/tutorial/2018/08/27/how-to-create-custom-django-management-commands.html">How to Create Custom Django Management Commands</a>
+explains how to expand the default <code>manage.py</code> commands list with your
+own custom commands in your projects. The tutorial has a bunch of great
+examples with expected output to make it easy to follow along and learn
+while you work through the post.</p>
+</li>
+<li>
+<p>Luke Plant writes about
+<a href="http://lukeplant.me.uk/blog/posts/my-approach-to-class-based-views/">his approach to class based views</a> (CBVs),
+which often provoke heated debate in the Django community for whether they
+are a time saver or "too much magic" for the framework.</p>
+</li>
+<li>
+<p><a href="https://devchecklists.com/django-apps-checklist/en/">Django Apps Checklist</a>
+gives some good practices rules for building reusable Django apps.</p>
+</li>
+</ul>
+<h2>Django migrations</h2>
+<ul>
+<li>
+<p>Paul Hallett wrote a
+<a href="https://www.twilio.com/blog/2014/10/upgrading-your-django-reusable-app-to-support-django-1-7.html">detailed Django 1.7 app upgrade guide</a>
+on the Twilio blog from his experience working with the django-twilio
+package.</p>
+</li>
+<li>
+<p>Real Python's <a href="https://realpython.com/blog/python/django-migrations-a-primer/">migrations primer</a>
+explores the difference between South's migrations and the built-in
+Django 1.7 migrations as well as how you use them.</p>
+</li>
+<li>
+<p>Andrew Pinkham's "Upgrading to Django 1.7" series is great learning
+material for understanding what's changed in this major release and
+how to adapt your Django project.
+<a href="http://andrewsforge.com/article/upgrading-django-to-17/part-1-introduction-and-django-releases/">Part 1</a>,
+<a href="http://andrewsforge.com/article/upgrading-django-to-17/part-2-migrations-in-django-16-and-17/">part 2</a> and
+<a href="http://andrewsforge.com/article/upgrading-django-to-17/part-3-django-17-new-features/">part 3</a>
+and
+<a href="http://andrewsforge.com/article/upgrading-django-to-17/part-4-upgrade-strategies/">part 4</a>
+are now all available to read.</p>
+</li>
+<li>
+<p><a href="http://pankrat.github.io/2015/django-migrations-without-downtimes/">Django migrations without downtimes</a>
+shows one potential way of performing on-line schema migrations with
+Django.</p>
+</li>
+<li>
+<p><a href="https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html">How to Extend Django User Model</a>
+presents four main ways to expand upon the built-in <code>User</code> model that
+is packaged with Django. This scenario is very common for all but the
+simplest Django projects.</p>
+</li>
+<li>
+<p><a href="https://testdriven.io/blog/django-custom-user-model/">Creating a Custom User Model in Django</a>
+looks at how to create a custom User model in Django so that an email
+address can be used as the primary user identifier instead of a
+username for authentication.</p>
+</li>
+</ul>
+<h2>Django Channels</h2>
+<p>Channels are a new mechanism in Django 1.9 provided as a standalone app.
+They may be incorporated into the core framework in 2.0+. Channels provide
+"real-time" full-duplex communication between the browser and the server
+based on <a href="/websockets.html">WebSockets</a>. </p>
+<ul>
+<li>
+<p>This
+<a href="https://blog.heroku.com/archives/2016/3/17/in_deep_with_django_channels_the_future_of_real_time_apps_in_django">tutorial shows how to get started with Django Channels in your project</a>.</p>
+</li>
+<li>
+<p>The
+<a href="https://github.com/andrewgodwin/channels-examples">channels examples repository</a>
+contains a couple of good starter projects such as a live blog and a
+chat application to use as base code.</p>
+</li>
+<li>
+<p>The <a href="https://testdriven.io/courses/real-time-app-with-django-channels-and-angular/?utm_source=fsp">Developing a Real-Time Taxi App with Django Channels and Angular</a>
+course details how to create a ride-sharing app with Django Channels,
+Angular, and Docker. Along the way, you'll learn how to manage
+client/server communication with Django Channels, control flow and
+routing with Angular, and build a RESTful API with Django REST
+Framework.</p>
+</li>
+</ul>
+<h2>Django testing</h2>
+<ul>
+<li>
+<p><a href="https://lincolnloop.com/blog/integrating-front-end-tools-your-django-project/">Integrating Front End Tools with Django</a>
+is a good post to read for figuring out how to use <a href="http://gulpjs.com/">Gulp</a>
+for handling front end tools in development and production Django sites.</p>
+</li>
+<li>
+<p><a href="https://www.valentinog.com/blog/testing-django/">Django Testing Cheat Sheet</a>
+covers many common scenarios for Django applications such as testing
+POST requests, request headers, authentication, and large numbers of
+model fields in the <a href="/django-orm.html">Django ORM</a>.</p>
+</li>
+<li>
+<p><a href="http://howchoo.com/g/mjkwmtu5zdl/getting-started-with-django-testing">Getting Started with Django Testing</a>
+will help you stop procrastinating on testing your Django projects if you're
+uncertain where to begin.</p>
+</li>
+<li>
+<p><a href="https://realpython.com/blog/python/testing-in-django-part-1-best-practices-and-examples/">Testing in Django</a>
+provides numerous examples and explanations for how to test your Django
+project's code.</p>
+</li>
+<li>
+<p><a href="https://medium.com/@unary/django-views-automated-testing-with-selenium-d9df95bdc926">Django views automated testing with Selenium</a>
+gives some example code to get up and running with
+<a href="http://www.seleniumhq.org">Selenium</a> browser-based tests.</p>
+</li>
+</ul>
+<h3>Django with JavaScript MVC frameworks</h3>
+<p>There are resources for JavaScript MVC frameworks such as
+<a href="/angular.html">Angular</a>, <a href="/react.html">React</a> and <a href="/vuejs.html">Vue.js</a>
+on their respective pages.</p>
+<h3>Django ORM tutorials</h3>
+<p>Django comes with its own custom object-relational mapper (ORM) typically
+referred to as "the Django ORM". Learn more about the
+<a href="/django-orm.html">Django ORM</a> on the its own page and more broadly about
+ORMs on the
+<a href="/object-relational-mappers-orms.html">Python object-relational mappers page</a>.</p>
+<h2>Static and media files</h2>
+<p>Deploying and handling static and media files can be confusing for new
+Django developers. These resources along with the
+<a href="/static-content.html">static content</a> page are useful for figuring out how
+to handle these files properly.</p>
+<ul>
+<li>
+<p><a href="http://www.caktusgroup.com/blog/2014/11/10/Using-Amazon-S3-to-store-your-Django-sites-static-and-media-files/">Using Amazon S3 to Store your Django Site's Static and Media Files</a>
+is a well written guide to a question commonly asked about static and
+media file serving.</p>
+</li>
+<li>
+<p><a href="http://www.revsys.com/blog/2014/dec/03/loading-django-files-from-code/">Loading Django FileField and ImageFields from the file system</a>
+shows how to load a model field with a file from the file system.</p>
+</li>
+<li>
+<p><a href="https://testdriven.io/storing-django-static-and-media-files-on-amazon-s3">Storing Django Static and Media Files on Amazon S3</a>
+shows how to configure Django to load and serve up static and media files, public and private, via an Amazon S3 bucket.</p>
+</li>
+</ul>
+<h2>Django project templates</h2>
+<p>Project templates, not to be confused with a
+<a href="/template-engines.html">template engine</a>, generate boilerplate code for
+a base Django project plus optional libraries that are often used when
+developing web applications.</p>
+<ul>
+<li>
+<p><a href="https://github.com/caktus/django-project-template">Caktus Group's Django project template</a>
+is Django 2.2+ ready.</p>
+</li>
+<li>
+<p><a href="https://github.com/pydanny/cookiecutter-django">Cookiecutter Django</a> is a
+project template from Daniel Greenfeld, for use with Audrey Roy's
+<a href="https://github.com/audreyr/cookiecutter">Cookiecutter</a>. The template results
+are Heroku deployment-ready.</p>
+</li>
+<li>
+<p><a href="https://github.com/twoscoops/django-twoscoops-project">Two Scoops Django project template</a>
+is also from the PyDanny and Audrey Roy. This one provides a quick scaffold
+described in the Two Scoops of Django book.</p>
+</li>
+<li>
+<p><a href="https://github.com/mozilla/sugardough">Sugardough</a> is a Django project
+template from Mozilla that is compatible with cookiecutter.</p>
+</li>
+</ul>
+<h2>Open source Django example projects</h2>
+<p>Reading open source code can be useful when you are trying to figure
+out how to build your own projects. This is a short list of some
+real-world example applications, and many more can be found on the
+<a href="/django-code-examples.html">Django example projects and code</a> page.</p>
+<ul>
+<li>
+<p><a href="https://www.twilio.com/docs/howto/walkthrough/browser-calls/python/django">Browser calls with Django and Twilio</a>
+shows how to build a web app with Django and
+<a href="https://www.twilio.com/client">Twilio Client</a> to turn a user's web
+browser into a full-fledged phone. Pretty awesome!</p>
+</li>
+<li>
+<p><a href="https://github.com/ustream/openduty">Openduty</a> is a website status checking
+and alert system similar to PagerDuty.</p>
+</li>
+<li>
+<p><a href="https://github.com/myusuf3/courtside">Courtside</a> is a pick up sports web
+application written and maintained by the author of PyCoder's Weekly.</p>
+</li>
+<li>
+<p>These two Django Interactive Voice Response (IVR) system web application
+repositories <a href="https://github.com/phalt/twilio-django-part-1">part 1</a> and
+<a href="https://github.com/phalt/twilio-django-part-2">part 2</a> show you how to
+build a really cool Django application. There's also an accompanying
+<a href="https://www.twilio.com/blog/2014/07/build-an-ivr-system-with-twilio-and-django.html">blog post</a>
+with detailed explanations of each step.</p>
+</li>
+<li>
+<p><a href="https://github.com/taigaio/taiga-back">Taiga</a> is a project management
+tool built with Django as the backend and AngularJS as the front end.</p>
+</li>
+<li>
+<p><a href="https://github.com/huangsam/chowist">Chowist</a> is a web application
+that replicates core features of Yelp and adds a couple more bells
+and whistles.</p>
+</li>
+</ul>
+<h2>Open source code to learn Django</h2>
+<p>There are many open source projects that rely on Django.
+One of the best ways to learn how to use this framework is to read
+how other projects use it in real-world code. This section lists
+these code examples by class and method in Django's code base.</p>
+<div class="row">
+<div class="c12">
+<h3 class="toc-examples"><a href="/django.html">Django</a>:
+<a href="/django-extensions-plug-ins-related-libraries.html">Extensions, Plug-ins and Related Libraries</a> &amp;
+<a href="/django-code-examples.html">Example Projects and Code</a>
+</h3>
+<h4 class="bp"><a href="/django-apps-config-appconfig-examples.html">django.apps.config AppConfig</a></h4>
+<h4 class="bp">django.conf
+<a href="/django-conf-settings-examples.html">settings</a>,
+<a href="/django-conf-urls-url-examples.html">urls.url</a>
+</h4>
+<h4 class="bp"><a href="/django-contrib-admin-examples.html">django.contrib.admin</a>
+<a href="/django-contrib-admin-filters-simplelistfilter-examples.html">filters.SimpleListFilter</a>,
+</h4>
+<h4 class="bp"><a href="/django-contrib-admin-helpers-examples.html">django.contrib.admin.helpers</a>
+<a href="/django-contrib-admin-helpers-actionform-examples.html">ActionForm</a>,
+<a href="/django-contrib-admin-helpers-adminform-examples.html">AdminForm</a>
+</h4>
+<h4 class="bp">django.contrib.admin.options
+<a href="/django-contrib-admin-options-is-popup-var-examples.html">IS_POPUP_VAR</a>,
+<a href="/django-contrib-admin-options-incorrectlookupparameters-examples.html">IncorrectLookupParameters</a>,
+<a href="/django-contrib-admin-options-modeladmin-examples.html">ModelAdmin</a>,
+<a href="/django-contrib-admin-options-csrf-protect-m-examples.html">csrf_protect_m</a>
+</h4>
+<h4 class="bp">django.contrib.admin.sites
+<a href="/django-contrib-admin-sites-notregistered-examples.html">NotRegistered</a>,
+<a href="/django-contrib-admin-sites-register-examples.html">register</a>,
+<a href="/django-contrib-admin-sites-site-examples.html">site</a>
+</h4>
+<h4 class="bp">django.contrib.auth
+<a href="/django-contrib-auth-get-user-model-examples.html">get_user_model</a>,
+<a href="/django-contrib-auth-decorators-login-required-examples.html">decorators login_required</a>,
+<a href="/django-contrib-auth-hashers-make-password-examples.html">hashers make_password</a>
+</h4>
+<h4 class="bp">django.contrib.staticfiles
+<a href="/django-contrib-staticfiles-finders-examples.html">finders</a>,
+<a href="/django-contrib-staticfiles-finders-basefinder-examples.html">.finders BaseFinder</a>,
+<a href="/django-contrib-staticfiles-finders-basestoragefinder-examples.html">.finders BaseStorageFinder</a>,
+<a href="/django-contrib-staticfiles-finders-find-examples.html">.finders find</a>,
+<a href="/django-contrib-staticfiles-finders-get-finders-examples.html">.finders get_finders</a>
+<a href="/django-contrib-staticfiles-handlers-staticfileshandler-examples.html">.handlers StaticFilesHandler</a>
+<a href="/django-contrib-staticfiles-storage-examples.html">storage</a>
+<a href="/django-contrib-staticfiles-storage-cachedstaticfilesstorage-examples.html">.storage CachedStaticFilesStorage</a>,
+<a href="/django-contrib-staticfiles-storage-hashedfilesmixin-examples.html">.storage HashedFilesMixin</a>,
+<a href="/django-contrib-staticfiles-storage-manifeststaticfilesstorage-examples.html">.storage ManifestStaticFilesStorage</a>,
+<a href="/django-contrib-staticfiles-storage-staticfilesstorage-examples.html">.storage StaticFilesStorage</a>,
+<a href="/django-contrib-staticfiles-storage-staticfiles-storage-examples.html">.storage staticfiles_storage</a>
+<a href="/django-contrib-staticfiles-utils-matches-patterns-examples.html">.utils matches_patterns</a>
+</h4>
+<h4 class="bp">django.core
+<a href="/django-core-cache-examples.html">cache</a>,
+<a href="/django-core-checks-examples.html">checks</a>,
+<a href="/django-core-exceptions-examples.html">exceptions</a>,
+<a href="/django-core-mail-examples.html">mail</a>,
+<a href="/django-core-mail-send-mail-examples.html">mail.send_mail</a>,
+<a href="/django-core-mail-messages-emailmessage-examples.html">mail.messages EmailMessage</a>,
+<a href="/django-core-management-examples.html">management</a>,
+<a href="/django-core-management-base-basecommand-examples.html">management.base BaseCommand</a>,
+<a href="/django-core-serializers-examples.html">serializers</a>,
+<a href="/django-core-signals-examples.html">signals</a>,
+<a href="/django-core-signing-examples.html">signing</a>,
+<a href="/django-core-validators-examples.html">validators</a>
+</h4>
+<h4 class="bp">django.core.exceptions
+<a href="/django-core-exceptions-disallowedredirect-examples.html">DisallowedRedirect</a>,
+<a href="/django-core-exceptions-fielddoesnotexist-examples.html">FieldDoesNotExist</a>,
+<a href="/django-core-exceptions-fielderror-examples.html">FieldError</a>,
+<a href="/django-core-exceptions-improperlyconfigured-examples.html">ImproperlyConfigured</a>,
+<a href="/django-core-exceptions-middlewarenotused-examples.html">MiddlewareNotUsed</a>,
+<a href="/django-core-exceptions-non-field-errors-examples.html">NON_FIELD_ERRORS</a>,
+<a href="/django-core-exceptions-objectdoesnotexist-examples.html">ObjectDoesNotExist</a>,
+<a href="/django-core-exceptions-permissiondenied-examples.html">PermissionDenied</a>,
+<a href="/django-core-exceptions-suspiciousfileoperation-examples.html">SuspiciousFileOperation</a>,
+<a href="/django-core-exceptions-suspiciousmultipartform-examples.html">SuspiciousMultipartForm</a>,
+<a href="/django-core-exceptions-validationerror-examples.html">ValidationError</a>
+</h4>
+<h4 class="bp">django.db
+<a href="/django-db-default-db-alias-examples.html">DEFAULT_DB_ALIAS</a>,
+<a href="/django-db-dataerror-examples.html">DataError</a>,
+<a href="/django-db-databaseerror-examples.html">DatabaseError</a>,
+<a href="/django-db-integrityerror-examples.html">IntegrityError</a>,
+<a href="/django-db-operationalerror-examples.html">OperationalError</a>,
+<a href="/django-db-programmingerror-examples.html">ProgrammingError</a>,
+<a href="/django-db-connection-examples.html">connection</a>,
+<a href="/django-db-connections-examples.html">connections</a>,
+<a href="/django-db-migrations-examples.html">migrations</a>,
+<a href="/django-db-router-examples.html">router</a>,
+<a href="/django-db-transaction-examples.html">transaction</a>
+<a href="/django-db-backends-utils-examples.html">.backends utils</a>
+</h4>
+<h4 class="bp">django.db.migrations
+<a href="/django-db-migrations-runpython-examples.html">RunPython</a>,
+<a href="/django-db-migrations-autodetector-migrationautodetector-examples.html">.autodetector MigrationAutodetector</a>,
+<a href="/django-db-migrations-exceptions-irreversibleerror-examples.html">.exceptions IrreversibleError</a>,
+<a href="/django-db-migrations-executor-migrationexecutor-examples.html">.executor MigrationExecutor</a>,
+<a href="/django-db-migrations-loader-migrations-module-name-examples.html">.loader MIGRATIONS_MODULE_NAME</a>,
+<a href="/django-db-migrations-loader-migrationloader-examples.html">.loader MigrationLoader</a>,
+<a href="/django-db-migrations-operations-base-operation-examples.html">.operations.base Operation</a>,
+<a href="/django-db-migrations-state-projectstate-examples.html">.state ProjectState</a>
+</h4>
+<h4 class="bp"><a href="/django-db-models-examples.html">django.db.models</a>
+<a href="/django-db-models-autofield-examples.html">AutoField</a>,
+<a href="/django-db-models-booleanfield-examples.html">BooleanField</a>,
+<a href="/django-db-models-charfield-examples.html">CharField</a>,
+<a href="/django-db-models-datefield-examples.html">DateField</a>,
+<a href="/django-db-models-datetimefield-examples.html">DateTimeField</a>,
+<a href="/django-db-models-filefield-examples.html">FileField</a>,
+<a href="/django-db-models-foreignkey-examples.html">ForeignKey</a>,
+<a href="/django-db-models-genericipaddressfield-examples.html">GenericIPAddressField</a>,
+<a href="/django-db-models-imagefield-examples.html">ImageField</a>,
+<a href="/django-db-models-integerfield-examples.html">IntegerField</a>,
+<a href="/django-db-models-model-examples.html">Model</a>,
+<a href="/django-db-models-positiveintegerfield-examples.html">PositiveIntegerField</a>,
+<a href="/django-db-models-positivesmallintegerfield-examples.html">PositiveSmallIntegerField</a>,
+<a href="/django-db-models-signal-examples.html">signal</a>,
+<a href="/django-db-models-slugfield-examples.html">SlugField</a>,
+<a href="/django-db-models-smallintegerfield-examples.html">SmallIntegerField</a>,
+<a href="/django-db-models-textfield-examples.html">TextField</a>
+</h4>
+<h4 class="bp">django.db.models.query
+<a href="/django-db-models-query-baseiterable-examples.html">BaseIterable</a>,
+<a href="/django-db-models-query-emptyqueryset-examples.html">EmptyQuerySet</a>,
+<a href="/django-db-models-query-modeliterable-examples.html">ModelIterable</a>,
+<a href="/django-db-models-query-prefetch-examples.html">Prefetch</a>,
+<a href="/django-db-models-query-q-examples.html">Q</a>,
+<a href="/django-db-models-query-queryset-examples.html">QuerySet</a>,
+<a href="/django-db-models-query-prefetch-related-objects-examples.html">prefetch_related_objects</a>
+</h4>
+<h4 class="bp">django.db.models.query_utils
+<a href="/django-db-models-query-utils-deferredattribute-examples.html">DeferredAttribute</a>,
+<a href="/django-db-models-query-utils-pathinfo-examples.html">PathInfo</a>,
+<a href="/django-db-models-query-utils-q-examples.html">Q</a>
+</h4>
+<h4 class="bp">django.db.models.signals
+<a href="/django-db-models-signals-post-delete-examples.html">post_delete</a>,
+<a href="/django-db-models-signals-post-save-examples.html">post_save</a>,
+<a href="/django-db-models-signals-pre-delete-examples.html">pre_delete</a>,
+<a href="/django-db-models-signals-pre-save-examples.html">pre_save</a>
+</h4>
+<h4 class="bp"><a href="/django-dispatch-dispatcher-signal-examples.html">django.dispatch.dispatcher Signal</a></h4>
+<h4 class="bp"><a href="/django-forms-examples.html">django.forms</a>
+<a href="/django-forms-baseform-examples.html">BaseForm</a>,
+<a href="/django-forms-booleanfield-examples.html">BooleanField</a>,
+<a href="/django-forms-charfield-examples.html">CharField</a>,
+<a href="/django-forms-checkboxinput-examples.html">CheckboxInput</a>,
+<a href="/django-forms-checkboxselectmultiple-examples.html">CheckboxSelectMultiple</a>,
+<a href="/django-forms-choicefield-examples.html">ChoiceField</a>,
+<a href="/django-forms-datefield-examples.html">DateField</a>,
+<a href="/django-forms-dateinput-examples.html">DateInput</a>,
+<a href="/django-forms-datetimefield-examples.html">DateTimeField</a>,
+<a href="/django-forms-emailfield-examples.html">EmailField</a>,
+<a href="/django-forms-field-examples.html">Field</a>,
+<a href="/django-forms-fileinput-examples.html">FileInput</a>,
+<a href="/django-forms-filepathfield-examples.html">FilePathField</a>,
+<a href="/django-forms-form-examples.html">Form</a>,
+<a href="/django-forms-hiddeninput-examples.html">HiddenInput</a>,
+<a href="/django-forms-imagefield-examples.html">ImageField</a>,
+<a href="/django-forms-integerfield-examples.html">IntegerField</a>,
+<a href="/django-forms-media-examples.html">Media</a>,
+<a href="/django-forms-mediadefiningclass-examples.html">MediaDefiningClass</a>,
+<a href="/django-forms-modelchoicefield-examples.html">ModelChoiceField</a>,
+<a href="/django-forms-modelform-examples.html">ModelForm</a>,
+<a href="/django-forms-modelmultiplechoicefield-examples.html">ModelMultipleChoiceField</a>,
+<a href="/django-forms-multiplechoicefield-examples.html">MultipleChoiceField</a>,
+<a href="/django-forms-select-examples.html">Select</a>,
+<a href="/django-forms-selectmultiple-examples.html">SelectMultiple</a>,
+<a href="/django-forms-typedchoicefield-examples.html">TypedChoiceField</a>,
+<a href="/django-forms-validationerror-examples.html">ValidationError</a>
+</h4>
+<h4 class="bp">django.http
+<a href="/django-http-httpresponse-examples.html">HttpResponse</a>,
+<a href="/django-http-httpresponsebadrequest-examples.html">HttpResponseBadRequest</a>,
+<a href="/django-http-httpresponseforbidden-examples.html">HttpResponseForbidden</a>,
+<a href="/django-http-httpresponsenotmodified-examples.html">HttpResponseNotModified</a>,
+<a href="/django-http-http404-examples.html">Http404</a>,
+<a href="/django-http-httpresponsepermanentredirect-examples.html">HttpResponsePermanentRedirect</a>,
+<a href="/django-http-httpresponseredirect-examples.html">HttpResponseRedirect</a>
+</h4>
+<h4 class="bp">django.shortcuts
+<a href="/django-shortcuts-get-list-or-404-examples.html">get_list_or_404</a>,
+<a href="/django-shortcuts-get-object-or-404-examples.html">get_object_or_404</a>,
+<a href="/django-shortcuts-redirect-examples.html">redirect</a>,
+<a href="/django-shortcuts-render-examples.html">render</a>,
+<a href="/django-shortcuts-resolve-url-examples.html">resolve_url</a>
+</h4>
+<h4 class="bp">django.template.base
+<a href="/django-template-base-context-examples.html">Context</a>,
+<a href="/django-template-base-filterexpression-examples.html">FilterExpression</a>,
+<a href="/django-template-base-node-examples.html">Node</a>,
+<a href="/django-template-base-nodelist-examples.html">NodeList</a>,
+<a href="/django-template-base-parser-examples.html">Parser</a>,
+<a href="/django-template-base-template-examples.html">Template</a>,
+<a href="/django-template-base-templatesyntaxerror-examples.html">TemplateSyntaxError</a>,
+<a href="/django-template-base-textnode-examples.html">TextNode</a>,
+<a href="/django-template-base-token-examples.html">Token</a>,
+<a href="/django-template-base-tokentype-examples.html">TokenType</a>,
+<a href="/django-template-base-variabledoesnotexist-examples.html">VariableDoesNotExist</a>,
+<a href="/django-template-base-variablenode-examples.html">VariableNode</a>,
+<a href="/django-template-base-token-kwargs-examples.html">token_kwargs</a>
+</h4>
+<h4 class="bp">django.template.context
+<a href="/django-template-context-context-examples.html">Context</a>
+</h4>
+<h4 class="bp">django.template.defaultfilters
+<a href="/django-template-defaultfilters-escape-examples.html">escape</a>,
+<a href="/django-template-defaultfilters-filesizeformat-examples.html">filesizeformat</a>,
+<a href="/django-template-defaultfilters-safe-examples.html">safe</a>,
+<a href="/django-template-defaultfilters-slugify-examples.html">slugify</a>,
+<a href="/django-template-defaultfilters-striptags-examples.html">striptags</a>,
+<a href="/django-template-defaultfilters-title-examples.html">title</a>,
+<a href="/django-template-defaultfilters-truncatechars-examples.html">truncatechars</a>
+</h4>
+<h4 class="bp"><a href="/django-template-loader-examples.html">django.template.loader</a>
+<a href="/django-template-loader-get-template-examples.html">get_template</a>,
+<a href="/django-template-loader-render-to-string-examples.html">render_to_string</a>,
+<a href="/django-template-loader-select-template-examples.html">select_template</a>
+</h4>
+<h4 class="bp">django.template.loader_tags
+<a href="/django-template-loader-tags-blocknode-examples.html">BlockNode</a>,
+<a href="/django-template-loader-tags-extendsnode-examples.html">ExtendsNode</a>,
+<a href="/django-template-loader-tags-includenode-examples.html">IncludeNode</a>
+</h4>
+<h4 class="bp">django.template.loaders.filesystem
+<a href="/django-template-loaders-filesystem-loader-examples.html">Loader</a>
+</h4>
+<h4 class="bp">django.template.response
+<a href="/django-template-response-simpletemplateresponse-examples.html">SimpleTemplateResponse</a>,
+<a href="/django-template-response-templateresponse-examples.html">TemplateResponse</a>
+</h4>
+<h4 class="bp">django.urls
+<a href="/django-urls-urlpattern-examples.html">URLPattern</a>,
+<a href="/django-urls-urlresolver-examples.html">URLResolver</a>,
+<a href="/django-urls-clear-url-caches-examples.html">clear_url_caches</a>,
+<a href="/django-urls-get-callable-examples.html">get_callable</a>,
+<a href="/django-urls-get-resolver-examples.html">get_resolver</a>,
+<a href="/django-urls-get-script-prefix-examples.html">get_script_prefix</a>,
+<a href="/django-urls-include-examples.html">include</a>,
+<a href="/django-urls-path-examples.html">path</a>,
+<a href="/django-urls-re-path-examples.html">re_path</a>,
+<a href="/django-urls-register-converter-examples.html">register_converter</a>,
+<a href="/django-urls-resolve-examples.html">resolve</a>,
+<a href="/django-urls-reverse-examples.html">reverse</a>,
+<a href="/django-urls-reverse-lazy-examples.html">reverse_lazy</a>
+</h4>
+<h4 class="bp">django.urls.exceptions
+<a href="/django-urls-exceptions-noreversematch-examples.html">NoReverseMatch</a>,
+<a href="/django-urls-exceptions-resolver404-examples.html">Resolver404</a>
+</h4>
+<h4 class="bp">django.utils
+<a href="/django-utils-dateformat-examples.html">dateformat</a>,
+<a href="/django-utils-dateparse-examples.html">dateparse</a>,
+<a href="/django-utils-datetime-safe-examples.html">datetime_safe</a>,
+<a href="/django-utils-formats-examples.html">formats</a>,
+<a href="/django-utils-module-loading-examples.html">module_loading</a>,
+<a href="/django-utils-termcolors-examples.html">termcolors</a>,
+<a href="/django-utils-timezone-examples.html">timezone</a>,
+<a href="/django-utils-translation-examples.html">translation</a>,
+<a href="/django-utils-tree-examples.html">tree</a>
+</h4>
+<h4 class="bp">django.utils.cache
+<a href="/django-utils-cache-add-never-cache-headers-examples.html">add_never_cache_headers</a>,
+<a href="/django-utils-cache-cc-delim-re-examples.html">cc_delim_re</a>,
+<a href="/django-utils-cache-patch-cache-control-examples.html">patch_cache_control</a>,
+<a href="/django-utils-cache-patch-response-headers-examples.html">patch_response_headers</a>,
+<a href="/django-utils-cache-patch-vary-headers-examples.html">patch_vary_headers</a>
+</h4>
+<h4 class="bp">django.utils.crypto
+<a href="/django-utils-crypto-constant-time-compare-examples.html">constant_time_compare</a>,
+<a href="/django-utils-crypto-get-random-string-examples.html">get_random_string</a>
+</h4>
+<h4 class="bp">django.utils.datastructures
+<a href="/django-utils-datastructures-multivaluedict-examples.html">MultiValueDict</a>
+</h4>
+<h4 class="bp">django.utils.dateparse
+<a href="/django-utils-dateparse-parse-datetime-examples.html">parse_datetime</a>,
+<a href="/django-utils-dateparse-parse-duration-examples.html">parse_duration</a>
+</h4>
+<h4 class="bp">django.utils.dates
+<a href="/django-utils-dates-months-examples.html">MONTHS</a>
+</h4>
+<h4 class="bp">django.utils.datetime_safe
+<a href="/django-utils-datetime-safe-datetime-examples.html">datetime</a>
+</h4>
+<h4 class="bp">django.utils.decorators
+<a href="/django-utils-decorators-method-decorator-examples.html">method_decorator</a>
+</h4>
+<h4 class="bp">django.utils.deprecation
+<a href="/django-utils-deprecation-middlewaremixin-examples.html">MiddlewareMixin</a>,
+<a href="/django-utils-deprecation-renamemethodsbase-examples.html">RenameMethodsBase</a>
+</h4>
+<h4 class="bp">django.utils.duration
+<a href="/django-utils-duration-duration-string-examples.html">duration_string</a>
+</h4>
+<h4 class="bp">django.utils.encoding
+<a href="/django-utils-encoding-djangounicodedecodeerror-examples.html">DjangoUnicodeDecodeError</a>,
+<a href="/django-utils-encoding-filepath-to-uri-examples.html">filepath_to_uri</a>,
+<a href="/django-utils-encoding-force-bytes-examples.html">force_bytes</a>,
+<a href="/django-utils-encoding-force-str-examples.html">force_str</a>,
+<a href="/django-utils-encoding-force-text-examples.html">force_text</a>,
+<a href="/django-utils-encoding-iri-to-uri-examples.html">iri_to_uri</a>,
+<a href="/django-utils-encoding-is-protected-type-examples.html">is_protected_type</a>,
+<a href="/django-utils-encoding-smart-bytes-examples.html">smart_bytes</a>,
+<a href="/django-utils-encoding-smart-str-examples.html">smart_str</a>,
+<a href="/django-utils-encoding-smart-text-examples.html">smart_text</a>,
+<a href="/django-utils-encoding-uri-to-iri-examples.html">uri_to_iri</a>
+</h4>
+<h4 class="bp">django.utils.formats
+<a href="/django-utils-formats-get-format-examples.html">get_format</a>,
+<a href="/django-utils-formats-localize-input-examples.html">localize_input</a>,
+<a href="/django-utils-formats-sanitize-separators-examples.html">sanitize_separators</a>
+</h4>
+<h4 class="bp">django.utils.functional
+<a href="/django-utils-functional-lazyobject-examples.html">LazyObject</a>,
+<a href="/django-utils-functional-promise-examples.html">Promise</a>,
+<a href="/django-utils-functional-simplelazyobject-examples.html">SimpleLazyObject</a>,
+<a href="/django-utils-functional-keep-lazy-examples.html">keep_lazy</a>,
+<a href="/django-utils-functional-lazy-examples.html">lazy</a>,
+<a href="/django-utils-functional-total-ordering-examples.html">total_ordering</a>,
+<a href="/django-utils-functional-wraps-examples.html">wraps</a>
+</h4>
+<h4 class="bp">django.utils.html
+<a href="/django-utils-html-conditional-escape-examples.html">conditional_escape</a>,
+<a href="/django-utils-html-escape-examples.html">escape</a>,
+<a href="/django-utils-html-escapejs-examples.html">escapejs</a>,
+<a href="/django-utils-html-format-html-examples.html">format_html</a>,
+<a href="/django-utils-html-format-html-join-examples.html">format_html_join</a>,
+<a href="/django-utils-html-mark-safe-examples.html">mark_safe</a>,
+<a href="/django-utils-html-smart-urlquote-examples.html">smart_urlquote</a>,
+<a href="/django-utils-html-strip-tags-examples.html">strip_tags</a>
+</h4>
+<h4 class="bp">django.utils.http
+<a href="/django-utils-http-base36-to-int-examples.html">base36_to_int</a>,
+<a href="/django-utils-http-http-date-examples.html">http_date</a>,
+<a href="/django-utils-http-int-to-base36-examples.html">int_to_base36</a>,
+<a href="/django-utils-http-is-safe-url-examples.html">is_safe_url</a>,
+<a href="/django-utils-http-unquote-examples.html">unquote</a>,
+<a href="/django-utils-http-url-has-allowed-host-and-scheme-examples.html">url_has_allowed_host_and_scheme</a>,
+<a href="/django-utils-http-urlencode-examples.html">urlencode</a>,
+<a href="/django-utils-http-urlquote-examples.html">urlquote</a>,
+<a href="/django-utils-http-urlunquote-examples.html">urlunquote</a>
+</h4>
+<h4 class="bp">django.utils.ipv6
+<a href="/django-utils-ipv6-clean-ipv6-address-examples.html">clean_ipv6_address</a>
+</h4>
+<h4 class="bp">django.utils.itercompat
+<a href="/django-utils-itercompat-is-iterable-examples.html">is_iterable</a>
+</h4>
+<h4 class="bp">django.utils.module_loading
+<a href="/django-utils-module-loading-autodiscover-modules-examples.html">autodiscover_modules</a>,
+<a href="/django-utils-module-loading-import-string-examples.html">import_string</a>,
+<a href="/django-utils-module-loading-module-has-submodule-examples.html">module_has_submodule</a>
+</h4>
+<h4 class="bp">django.utils.numberformat
+<a href="/django-utils-numberformat-format-examples.html">format</a>
+</h4>
+<h4 class="bp">django.utils.safestring
+<a href="/django-utils-safestring-safedata-examples.html">SafeData</a>,
+<a href="/django-utils-safestring-safetext-examples.html">SafeText</a>,
+<a href="/django-utils-safestring-mark-safe-examples.html">mark_safe</a>
+</h4>
+<h4 class="bp">django.utils.termcolors
+<a href="/django-utils-termcolors-colorize-examples.html">colorize</a>
+</h4>
+<h4 class="bp">django.utils.text
+<a href="/django-utils-text-truncator-examples.html">Truncator</a>,
+<a href="/django-utils-text-capfirst-examples.html">capfirst</a>,
+<a href="/django-utils-text-format-lazy-examples.html">format_lazy</a>,
+<a href="/django-utils-text-get-text-list-examples.html">get_text_list</a>,
+<a href="/django-utils-text-get-valid-filename-examples.html">get_valid_filename</a>,
+<a href="/django-utils-text-slugify-examples.html">slugify</a>
+</h4>
+<h4 class="bp"><a href="/django-utils-timezone-examples.html">django.utils.timezone</a>
+<a href="/django-utils-timezone-get-current-timezone-examples.html">get_current_timezone</a>,
+<a href="/django-utils-timezone-make-aware-examples.html">make_aware</a>,
+<a href="/django-utils-timezone-now-examples.html">now</a>,
+<a href="/django-utils-timezone-timedelta-examples.html">timedelta</a>
+</h4>
+<h4 class="bp">django.utils.translation
+<a href="/django-utils-translation-language-session-key-examples.html">LANGUAGE_SESSION_KEY</a>,
+<a href="/django-utils-translation-activate-examples.html">activate</a>,
+<a href="/django-utils-translation-deactivate-all-examples.html">deactivate_all</a>,
+<a href="/django-utils-translation-get-language-examples.html">get_language</a>,
+<a href="/django-utils-translation-get-language-from-request-examples.html">get_language_from_request</a>,
+<a href="/django-utils-translation-gettext-examples.html">gettext</a>,
+<a href="/django-utils-translation-gettext-lazy-examples.html">gettext_lazy</a>,
+<a href="/django-utils-translation-ngettext-examples.html">ngettext</a>,
+<a href="/django-utils-translation-override-examples.html">override</a>,
+<a href="/django-utils-translation-pgettext-examples.html">pgettext</a>,
+<a href="/django-utils-translation-pgettext-lazy-examples.html">pgettext_lazy</a>,
+<a href="/django-utils-translation-ugettext-examples.html">ugettext</a>,
+<a href="/django-utils-translation-ugettext-lazy-examples.html">ugettext_lazy</a>,
+<a href="/django-utils-translation-ungettext-examples.html">ungettext</a>,
+<a href="/django-utils-translation-ungettext-lazy-examples.html">ungettext_lazy</a>
+</h4>
+<h4 class="bp">django.utils.version
+<a href="/django-utils-version-get-complete-version-examples.html">get_complete_version</a>
+</h4>
+<h4 class="bp">django.views
+<a href="/django-views-csrf-examples.html">csrf</a>
+<a href="/django-views-debug-get-default-exception-reporter-filter-examples.html">.debug get_default_exception_reporter_filter</a>
+<a href="/django-views-decorators-csrf-csrf-exempt-examples.html">.decorators.csrf csrf_exempt</a>
+<a href="/django-views-decorators-debug-sensitive-post-parameters-examples.html">.decorators.debug sensitive_post_parameters</a>
+<a href="/django-views-decorators-http-require-get-examples.html">.decorators.http require_GET</a>,
+<a href="/django-views-decorators-http-require-post-examples.html">.decorators.http require_POST</a>
+</h4>
+<h4 class="bp">django.views.generic
+<a href="/django-views-generic-createview-examples.html">CreateView</a>,
+<a href="/django-views-generic-deleteview-examples.html">DeleteView</a>,
+<a href="/django-views-generic-detailview-examples.html">DetailView</a>,
+<a href="/django-views-generic-formview-examples.html">FormView</a>,
+<a href="/django-views-generic-listview-examples.html">ListView</a>,
+<a href="/django-views-generic-redirectview-examples.html">RedirectView</a>,
+<a href="/django-views-generic-templateview-examples.html">TemplateView</a>,
+<a href="/django-views-generic-updateview-examples.html">UpdateView</a>,
+<a href="/django-views-generic-view-examples.html">View</a>
+</h4>
+<h4 class="bp">django.views.generic.base
+<a href="/django-views-generic-base-redirectview-examples.html">RedirectView</a>,
+<a href="/django-views-generic-base-templateresponsemixin-examples.html">TemplateResponseMixin</a>,
+<a href="/django-views-generic-base-templateview-examples.html">TemplateView</a>,
+<a href="/django-views-generic-base-view-examples.html">View</a>
+</h4>
+<h4 class="bp">django.views.generic.detail
+<a href="/django-views-generic-detail-singleobjectmixin-examples.html">SingleObjectMixin</a>
+</h4>
+<h4 class="bp">django.views.generic.edit
+<a href="/django-views-generic-edit-createview-examples.html">CreateView</a>,
+<a href="/django-views-generic-edit-deleteview-examples.html">DeleteView</a>,
+<a href="/django-views-generic-edit-deletionmixin-examples.html">DeletionMixin</a>,
+<a href="/django-views-generic-edit-formmixin-examples.html">FormMixin</a>,
+<a href="/django-views-generic-edit-formview-examples.html">FormView</a>
+</h4>
+<h4 class="bp">django.views.generic.list
+<a href="/django-views-generic-list-listview-examples.html">ListView</a>,
+<a href="/django-views-generic-list-multipleobjectmixin-examples.html">MultipleObjectMixin</a>
+</h4>
+<h4 class="bp">django.views.i18n
+<a href="/django-views-i18n-javascriptcatalog-examples.html">JavaScriptCatalog</a>
+</h4>
+<h4 class="bp">django.views.static
+<a href="/django-views-static-serve-examples.html">serve</a>,
+<a href="/django-views-static-was-modified-since-examples.html">was_modified_since</a>
+</h4>
+</div>
+</div><h3>What do you need to learn next for your Django app?</h3>
+<div class="row">
+<div class="c4">
+<div class="well select-next">
+<a href="/cascading-style-sheets.html" class="btn btn-success btn-full"><svg width="28" height="30" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M275 128h1505l-266 1333-804 267-698-267 71-356h297l-29 147 422 161 486-161 68-339h-1208l58-297h1209l38-191h-1208z" fill="#fff" /></svg></a>
+<p class="under-btn">My app runs but looks awful. How do I style the user interface?</p> </div>
+</div>
+<div class="c4">
+<div class="well select-next">
+<a href="/api-integration.html" class="btn btn-success btn-full"><svg width="28" height="30" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="#fff" /></svg></a>
+<p class="under-btn">How do I integrate existing web APIs into my application?</p> </div>
+</div>
+<div class="c4">
+<div class="well select-next">
+<a href="/deployment.html" class="btn btn-success btn-full"><svg width="28" height="30" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1792 640q0 26-19 45l-512 512q-19 19-45 19t-45-19-19-45v-256h-224q-98 0-175.5 6t-154 21.5-133 42.5-105.5 69.5-80 101-48.5 138.5-17.5 181q0 55 5 123 0 6 2.5 23.5t2.5 26.5q0 15-8.5 25t-23.5 10q-16 0-28-17-7-9-13-22t-13.5-30-10.5-24q-127-285-127-451 0-199 53-333 162-403 875-403h224v-256q0-26 19-45t45-19 45 19l512 512q19 19 19 45z" fill="#fff" /></svg></a>
+<p class="under-btn">I've built a Python web app, now how do I deploy it?</p> </div>
+</div>
+</div> </div>
+<div class="co1 c3">
+<div class="pn">
+<div class="pnh"><h3>Sponsored By</h3></div>
+<div class="pnb">
+<a href="https://sentry.io/" style="border:none"><img src="/img/logos/sentry-light.png" alt="Sentry logo" width="100%" style="padding:0 0 2px"></a>
+<p class="sps">Software errors are inevitable. Chaos is not. <a href="https://sentry.io/">Try Sentry for free</a>.</p>
+<hr>
+<a href="https://www.assemblyai.com/" style="border:none"><img src="/img/logos/assemblyai-white-bg.png" alt="AssemblyAI logo" width="100%" style="padding:0 0 8px; border:none"></a>
+<p class="sps">The most accurate speech-to-text API. <a href="https://www.assemblyai.com/">Built for Python developers</a>.</p>
+</div>
+</div><div class="pn">
+<div class="pnb">
+<script async type="0b66ef2837fec21c812c8f28-text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CE7DP2QI&placement=wwwfullstackpythoncom" id="_carbonads_js"></script>
+</div>
+</div><div class="pn" id="full-toc">
+<div class="pnh">
+<h3><a href="/table-of-contents.html">Table of Contents</a></h3>
+</div>
+<div class="lg">
+<a href="/introduction.html" class="lgi ">1. Introduction</a>
+<a href="/development-environments.html" class="lgi ">2. Development Environments</a>
+<a href="/data.html" class="lgi ">3. Data</a>
+<a href="/web-development.html" class="lgi ">4. Web Development</a>
+<a href="/web-frameworks.html" class="lgi sbc">Web Frameworks</a>
+<a href="/django.html" class="lgi active sbc">Django</a>
+<a href="/flask.html" class="lgi sbc">Flask</a>
+<a href="/bottle.html" class="lgi sbc">Bottle</a>
+<a href="/pyramid.html" class="lgi sbc">Pyramid</a>
+<a href="/turbogears.html" class="lgi sbc">TurboGears</a>
+<a href="/falcon.html" class="lgi sbc">Falcon</a>
+<a href="/morepath.html" class="lgi sbc">Morepath</a>
+<a href="/sanic.html" class="lgi sbc">Sanic</a>
+<a href="/other-web-frameworks.html" class="lgi sbc">Other Web Frameworks</a>
+<a href="/template-engines.html" class="lgi sbc">Template Engines</a>
+<a href="/jinja2.html" class="lgi sbc">Jinja2</a>
+<a href="/mako.html" class="lgi sbc">Mako</a>
+<a href="/django-templates.html" class="lgi sbc">Django Templates</a>
+<a href="/web-design.html" class="lgi sbc">Web Design</a>
+<a href="/hypertext-markup-language-html.html" class="lgi sbc">HTML</a>
+<a href="/cascading-style-sheets.html" class="lgi sbc">Cascading Style Sheets (CSS)</a>
+<a href="/responsive-design.html" class="lgi sbc">Responsive Design</a>
+<a href="/minification.html" class="lgi sbc">Minification</a>
+<a href="/css-frameworks.html" class="lgi sbc">CSS Frameworks</a>
+<a href="/bootstrap-css.html" class="lgi sbc">Bootstrap</a>
+<a href="/foundation-css.html" class="lgi sbc">Foundation</a>
+<a href="/javascript.html" class="lgi sbc">JavaScript</a>
+<a href="/react.html" class="lgi sbc">React</a>
+<a href="/vuejs.html" class="lgi sbc">Vue.js</a>
+<a href="/angular.html" class="lgi sbc">Angular</a>
+<a href="/task-queues.html" class="lgi sbc">Task Queues</a>
+<a href="/celery.html" class="lgi sbc">Celery</a>
+<a href="/redis-queue-rq.html" class="lgi sbc">Redis Queue (RQ)</a>
+<a href="/dramatiq.html" class="lgi sbc">Dramatiq</a>
+<a href="/static-site-generator.html" class="lgi sbc">Static Site Generators</a>
+<a href="/pelican.html" class="lgi sbc">Pelican</a>
+<a href="/lektor.html" class="lgi sbc">Lektor</a>
+<a href="/mkdocs.html" class="lgi sbc">MkDocs</a>
+<a href="/testing.html" class="lgi sbc">Testing</a>
+<a href="/unit-testing.html" class="lgi sbc">Unit Testing</a>
+<a href="/integration-testing.html" class="lgi sbc">Integration Testing</a>
+<a href="/debugging.html" class="lgi sbc">Debugging</a>
+<a href="/code-metrics.html" class="lgi sbc">Code Metrics</a>
+<a href="/networking.html" class="lgi sbc">Networking</a>
+<a href="/https.html" class="lgi sbc">HTTPS</a>
+<a href="/websockets.html" class="lgi sbc">WebSockets</a>
+<a href="/webrtc.html" class="lgi sbc">WebRTC</a>
+<a href="/application-programming-interfaces.html" class="lgi sbc">Web APIs</a>
+<a href="/microservices.html" class="lgi sbc">Microservices</a>
+<a href="/webhooks.html" class="lgi sbc">Webhooks</a>
+<a href="/bots.html" class="lgi sbc">Bots</a>
+<a href="/api-creation.html" class="lgi sbc">API Creation</a>
+<a href="/api-frameworks.html" class="lgi sbc">API Frameworks</a>
+<a href="/django-rest-framework-drf.html" class="lgi sbc">Django REST Framework</a>
+<a href="/api-integration.html" class="lgi sbc">API Integration</a>
+<a href="/twilio.html" class="lgi sbc">Twilio</a>
+<a href="/stripe.html" class="lgi sbc">Stripe</a>
+<a href="/slack.html" class="lgi sbc">Slack</a>
+<a href="/okta.html" class="lgi sbc">Okta</a>
+<a href="/web-application-security.html" class="lgi sbc">Security</a>
+<a href="/sql-injection.html" class="lgi sbc">SQL Injection</a>
+<a href="/cross-site-request-forgery-csrf.html" class="lgi sbc">CSRF</a>
+<a href="/deployment.html" class="lgi ">5. Deployment</a>
+<a href="/devops.html" class="lgi ">6. DevOps</a>
+<a href="/change-log.html" class="lgi ">Changelog</a>
+<a href="/what-full-stack-means.html" class="lgi ">What Full Stack Means</a>
+<a href="/about-author.html" class="lgi ">About the Author</a>
+<a href="/future-directions.html" class="lgi ">Future Directions</a>
+<a href="/page-statuses.html" class="lgi ">Page Statuses</a>
+<a href="/table-of-contents.html" class="lgi">...or view the full table of contents.</a>
+</div>
+</div> <div class="pn" style="margin-top:10px">
+<div class="pnh"><h3>Full Stack Python</h3></div>
+<div class="pnb">
+<a href="/table-of-contents.html">Full Stack Python</a>
+is an open book that explains concepts in plain language and provides
+helpful resources for those topics.
+<hr>
+Updates via
+<a href="https://twitter.com/fullstackpython">Twitter</a> &amp;
+<a href="https://www.facebook.com/fullstackpython">Facebook</a>.
+</div>
+</div>
+<div class="pn" id="mobile-toc">
+<div class="pnh">
+<h3><a href="/table-of-contents.html">Chapters</a></h3>
+</div>
+<div class="lg">
+<a href="/introduction.html" class="lgi ">1. Introduction</a>
+<a href="/development-environments.html" class="lgi ">2. Development Environments</a>
+<a href="/data.html" class="lgi ">3. Data</a>
+<a href="/web-development.html" class="lgi ">4. Web Development</a>
+<a href="/django.html" class="lgi active">&raquo; Django</a>
+<a href="/deployment.html" class="lgi ">5. Deployment</a>
+<a href="/devops.html" class="lgi ">6. DevOps</a>
+<a href="/change-log.html" class="lgi ">Changelog</a>
+<a href="/what-full-stack-means.html" class="lgi ">What Full Stack Means</a>
+<a href="/about-author.html" class="lgi ">About the Author</a>
+<a href="/future-directions.html" class="lgi ">Future Directions</a>
+<a href="/page-statuses.html" class="lgi ">Page Statuses</a>
+<a href="/table-of-contents.html" class="lgi">...or view the full table of contents.</a>
+</div>
+</div> </div>
+</div>
+<hr></div>
+<div class="cn"><div class="ft sns"><a href="/about-author.html">Matt Makai</a> <a href="/change-log.html">2012-2021</a></div></div>
+<script type="0b66ef2837fec21c812c8f28-text/javascript">(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-19910497-7', 'auto'); ga('send', 'pageview');</script>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="0b66ef2837fec21c812c8f28-|49" defer=""></script></body>
+</html>
